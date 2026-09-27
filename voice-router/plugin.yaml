@@ -1,0 +1,3 @@
+name: voice-router
+version: 0.1.0
+description: Jev-powered intent gate for conversational/STT turns — classifies each user message (command/question/chitchat/deep-task), injects a routing directive, and exposes a dispatch_deep tool for background big-model dispatch.
