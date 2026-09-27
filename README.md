@@ -110,6 +110,13 @@ Then try a deep task (`"research X and write up a full recommendation"`), and wa
 - **Subagent-safe.** The hook skips `platform == "subagent"` so `delegate_task` children (who carry their own instructions) are never routed.
 - **Secrets hygiene.** The API key lives only in a 0600 env file sourced by the launcher — never in Hermes config, argv, or this repo.
 
+## Default model tiers (Marc's routing defaults, both via Nous)
+
+- **Fast model (up-front conversational turn):** DeepSeek 4.1 Flash
+- **Slow model (background `delegate_task` child for `deep_task`):** GLM 5.3
+
+Note: a `pre_llm_call` hook cannot hard-swap the active model mid-turn — the fast tier is whatever the session's configured route is (intended: DeepSeek 4.1 Flash). The slow tier is enforced by the `dispatch_deep` directive instructing the agent to spawn the `delegate_task` child pinned to GLM 5.3.
+
 ## Phase 2 candidates (not built yet)
 
 - `jev_extract` to pull structured parameters from casual speech before dispatch ("schedule a thing with Erik Thursday" → task/person/date).

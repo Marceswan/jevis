@@ -116,7 +116,8 @@ def _dispatch_deep(task, context=""):
     return (
         f"DEEP TASK QUEUED: {task}\n\n"
         "Execute now: spawn ONE delegate_task child (background) with this task and "
-        "any needed context, on a strong model, with instructions to deliver a "
+        "any needed context, pinned to the strong model glm-5.3 on provider zai/nous, "
+        "with instructions to deliver a "
         "complete result. Confirm to the user that it is running in the background "
         "and that results will arrive when ready. Do not do the work inline."
     )
